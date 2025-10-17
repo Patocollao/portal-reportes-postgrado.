@@ -29,43 +29,70 @@
             <!-- Cabecera -->
             <header class="text-center mb-6 md:mb-8">
                 <h1 class="text-2xl md:text-3xl font-bold tracking-wider text-white">EQUIPO DE TUTORÍA ONLINE DE POSTGRADO</h1>
-                <p class="text-sm text-yellow-400 mt-2">Generado el jueves, 16 de octubre de 2025 a las 22:09 (hora del servidor)</p>
+                <!-- El texto de la fecha ahora se generará con JavaScript -->
+                <p id="current-date" class="text-sm text-yellow-400 mt-2"></p>
             </header>
 
             <!-- Contenido Principal (Logo y Botones) -->
-            <main class="flex flex-col md:flex-row items-center md:items-start gap-6 md:gap-8">
+            <main class="flex flex-col md:flex-row items-center md:items-center gap-6 md:gap-8">
 
                 <!-- Columna Izquierda: Logo -->
                 <div class="w-full md:w-1/3 flex-shrink-0">
                     <div class="bg-slate-900/50 p-4 rounded-xl border border-yellow-500 flex justify-center items-center">
-                       <img src="https://res.cloudinary.com/dk53pztfo/image/upload/v1760373349/ETOP_1__03_e5xcw0.png" alt="Logo ETOP" class="max-w-full h-auto rounded-lg">
+                       <a href="https://unabportal365.sharepoint.com/sites/actasynrc/SitePages/ITHelpdeskHome.aspx">
+                           <img src="https://res.cloudinary.com/dk53pztfo/image/upload/v1760373349/ETOP_1__03_e5xcw0.png" alt="Logo ETOP" class="max-w-full h-auto rounded-lg">
+                       </a>
                     </div>
                 </div>
 
                 <!-- Columna Derecha: Botones -->
                 <div class="w-full md:w-2/3">
                     <div class="grid grid-cols-1 gap-4 w-full">
-                        <!-- Se ha removido target="_blank" de todos los enlaces -->
-                        <a href="#" class="bg-slate-700 hover:bg-yellow-500 text-white hover:text-slate-900 font-bold py-3 px-4 rounded-lg text-center transition-all duration-300 ease-in-out transform hover:scale-105 shadow-md">Ficha estudiante</a>
-                        <a href="#" class="bg-slate-700 hover:bg-yellow-500 text-white hover:text-slate-900 font-bold py-3 px-4 rounded-lg text-center transition-all duration-300 ease-in-out transform hover:scale-105 shadow-md">Calendarios</a>
-                        <a href="#" class="bg-slate-700 hover:bg-yellow-500 text-white hover:text-slate-900 font-bold py-3 px-4 rounded-lg text-center transition-all duration-300 ease-in-out transform hover:scale-105 shadow-md">Reporte Semáforo</a>
+                        <a href="https://app.powerbi.com/groups/me/rdlreports/8906e85a-8edd-4883-b9f3-8cfd2bd19ed2?ctid=8fbed393-d03b-49f8-be79-cd5e1f590fb2&pbi_source=linkShare" class="bg-slate-700 hover:bg-yellow-500 text-white hover:text-slate-900 font-bold py-3 px-4 rounded-lg text-center transition-all duration-300 ease-in-out transform hover:scale-105 shadow-md">Ficha estudiante</a>
+                        <a href="https://app.powerbi.com/groups/me/rdlreports/a05b6a35-fb3a-4b71-b6e8-c9da205dfb6e?ctid=8fbed393-d03b-49f8-be79-cd5e1f590fb2&pbi_source=linkShare" class="bg-slate-700 hover:bg-yellow-500 text-white hover:text-slate-900 font-bold py-3 px-4 rounded-lg text-center transition-all duration-300 ease-in-out transform hover:scale-105 shadow-md">Calendarios</a>
+                        <a href="https://app.powerbi.com/groups/me/rdlreports/77569c05-501b-4c85-a186-3baaa5bce74d?ctid=8fbed393-d03b-49f8-be79-cd5e1f590fb2&pbi_source=linkShare" class="bg-slate-700 hover:bg-yellow-500 text-white hover:text-slate-900 font-bold py-3 px-4 rounded-lg text-center transition-all duration-300 ease-in-out transform hover:scale-105 shadow-md">Reporte Semáforo</a>
                         <a href="https://app.powerbi.com/groups/me/rdlreports/3f2b2640-4db1-42cb-9384-4771a63d0e58?ctid=8fbed393-d03b-49f8-be79-cd5e1f590fb2&pbi_source=linkShare" class="bg-slate-700 hover:bg-yellow-500 text-white hover:text-slate-900 font-bold py-3 px-4 rounded-lg text-center transition-all duration-300 ease-in-out transform hover:scale-105 shadow-md">Cursos por Fecha de inicio</a>
-                        <a href="#" class="bg-slate-700 hover:bg-yellow-500 text-white hover:text-slate-900 font-bold py-3 px-4 rounded-lg text-center transition-all duration-300 ease-in-out transform hover:scale-105 shadow-md">Reporte por NRC</a>
-                        <a href="#" class="bg-slate-700 hover:bg-yellow-500 text-white hover:text-slate-900 font-bold py-3 px-4 rounded-lg text-center transition-all duration-300 ease-in-out transform hover:scale-105 shadow-md">Reporte Incidencias</a>
-                        <a href="#" class="bg-slate-700 hover:bg-yellow-500 text-white hover:text-slate-900 font-bold py-3 px-4 rounded-lg text-center transition-all duration-300 ease-in-out transform hover:scale-105 shadow-md">Estado Actual Base/Semáforo</a>
+                        <a href="https://app.powerbi.com/groups/me/rdlreports/38d10ae7-06e2-4c98-8c56-e24f39940f82?ctid=8fbed393-d03b-49f8-be79-cd5e1f590fb2&pbi_source=linkShare" class="bg-slate-700 hover:bg-yellow-500 text-white hover:text-slate-900 font-bold py-3 px-4 rounded-lg text-center transition-all duration-300 ease-in-out transform hover:scale-105 shadow-md">Reporte por NRC</a>
+                        <a href="https://app.powerbi.com/groups/me/rdlreports/52a22d54-d526-4842-8399-f57b9c9ab355?ctid=8fbed393-d03b-49f8-be79-cd5e1f590fb2&pbi_source=linkShare" class="bg-slate-700 hover:bg-yellow-500 text-white hover:text-slate-900 font-bold py-3 px-4 rounded-lg text-center transition-all duration-300 ease-in-out transform hover:scale-105 shadow-md">Reporte Incidencias</a>
+                        <a href="https://app.powerbi.com/groups/me/rdlreports/4ef42b48-6937-4acf-bd50-690e6de062f4?ctid=8fbed393-d03b-49f8-be79-cd5e1f590fb2&pbi_source=linkShare" class="bg-slate-700 hover:bg-yellow-500 text-white hover:text-slate-900 font-bold py-3 px-4 rounded-lg text-center transition-all duration-300 ease-in-out transform hover:scale-105 shadow-md">Estado Actual Base/Semáforo</a>
                     </div>
                 </div>
 
             </main>
 
+            <!-- Pie de Página con Contacto -->
+            <footer class="text-center text-sm text-slate-300 mt-8 pt-6 border-t border-slate-700">
+                <p>Ante dudas por favor comunicarse con el coordinador Patricio Collao al correo <a href="mailto:patricio.collao@unab.cl" class="text-yellow-400 hover:underline">patricio.collao@unab.cl</a>.</p>
+            </footer>
+
         </div>
 
     </div>
 
+    <script>
+        // Este script obtiene la fecha y hora actual y la muestra en el formato deseado
+        const dateElement = document.getElementById('current-date');
+        const now = new Date();
+        
+        const days = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado'];
+        const months = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
+
+        const dayName = days[now.getDay()];
+        const day = now.getDate();
+        const monthName = months[now.getMonth()];
+        const year = now.getFullYear();
+        let hours = now.getHours();
+        let minutes = now.getMinutes();
+
+        // Agrega un cero adelante si el número es menor a 10 (para formato 09:05)
+        hours = hours < 10 ? '0' + hours : hours;
+        minutes = minutes < 10 ? '0' + minutes : minutes;
+
+        const formattedDate = `Generado el ${dayName}, ${day} de ${monthName} de ${year} a las ${hours}:${minutes}`;
+        
+        dateElement.textContent = formattedDate;
+    </script>
+
 </body>
 </html>
-
-
-
-
 
