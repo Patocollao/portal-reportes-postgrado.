@@ -3,96 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Centro de Reportes - Postgrado</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <title>Portal de Gestión Académica - ETOP</title>
     <style>
-        body {
-            font-family: 'Inter', sans-serif;
+        /* Estilos profesionales para el portal */
+        body, html { 
+            margin: 0; padding: 0; height: 100%; width: 100%; 
+            overflow: hidden; background-color: #1B222C; 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
         }
-        .main-panel {
-            background: rgba(30, 41, 59, 0.8); /* slate-800 with opacity */
-            backdrop-filter: blur(10px);
-            border: 2px solid #facc15; /* yellow-400 */
+        
+        #loader {
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            color: #F6C128; text-align: center; transition: opacity 0.5s; z-index: 20;
         }
+
+        /* Iframe que conecta con Hugging Face */
+        iframe { width: 100%; height: 100%; border: none; opacity: 0; transition: opacity 1s; }
+        .visible { opacity: 1 !important; }
+
+        .spinner {
+            border: 4px solid rgba(246, 193, 40, 0.1); border-top: 4px solid #F6C128;
+            border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; margin: 0 auto 20px auto;
+        }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
     </style>
 </head>
-<body class="bg-slate-900 text-white">
+<body>
 
-    <div class="min-h-screen flex flex-col items-center justify-center p-4 bg-cover bg-center" style="background-image: linear-gradient(to bottom right, #0d1a3e, #1e293b);">
-        
-        <!-- Contenedor Principal -->
-        <div class="w-full max-w-4xl mx-auto rounded-2xl p-6 md:p-8 main-panel shadow-2xl">
-
-            <!-- Cabecera -->
-            <header class="text-center mb-6 md:mb-8">
-                <h1 class="text-2xl md:text-3xl font-bold tracking-wider text-white">EQUIPO DE TUTORÍA ONLINE DE POSTGRADO</h1>
-                <!-- El texto de la fecha ahora se generará con JavaScript -->
-                <p id="current-date" class="text-sm text-yellow-400 mt-2"></p>
-            </header>
-
-            <!-- Contenido Principal (Logo y Botones) -->
-            <main class="flex flex-col md:flex-row items-center md:items-center gap-6 md:gap-8">
-
-                <!-- Columna Izquierda: Logo -->
-                <div class="w-full md:w-1/3 flex-shrink-0">
-                    <div class="bg-slate-900/50 p-4 rounded-xl border border-yellow-500 flex justify-center items-center">
-                       <a href="https://unabportal365.sharepoint.com/sites/actasynrc/SitePages/ITHelpdeskHome.aspx">
-                           <img src="https://res.cloudinary.com/dk53pztfo/image/upload/v1760373349/ETOP_1__03_e5xcw0.png" alt="Logo ETOP" class="max-w-full h-auto rounded-lg">
-                       </a>
-                    </div>
-                </div>
-
-                <!-- Columna Derecha: Botones -->
-                <div class="w-full md:w-2/3">
-                    <div class="grid grid-cols-1 gap-4 w-full">
-                        <a href="https://app.powerbi.com/groups/me/rdlreports/8906e85a-8edd-4883-b9f3-8cfd2bd19ed2?ctid=8fbed393-d03b-49f8-be79-cd5e1f590fb2&pbi_source=linkShare" class="bg-slate-700 hover:bg-yellow-500 text-white hover:text-slate-900 font-bold py-3 px-4 rounded-lg text-center transition-all duration-300 ease-in-out transform hover:scale-105 shadow-md">Ficha estudiante</a>
-                        <a href="https://app.powerbi.com/groups/me/rdlreports/a05b6a35-fb3a-4b71-b6e8-c9da205dfb6e?ctid=8fbed393-d03b-49f8-be79-cd5e1f590fb2&pbi_source=linkShare" class="bg-slate-700 hover:bg-yellow-500 text-white hover:text-slate-900 font-bold py-3 px-4 rounded-lg text-center transition-all duration-300 ease-in-out transform hover:scale-105 shadow-md">Calendarios</a>
-                        <a href="https://app.powerbi.com/groups/me/rdlreports/77569c05-501b-4c85-a186-3baaa5bce74d?ctid=8fbed393-d03b-49f8-be79-cd5e1f590fb2&pbi_source=linkShare" class="bg-slate-700 hover:bg-yellow-500 text-white hover:text-slate-900 font-bold py-3 px-4 rounded-lg text-center transition-all duration-300 ease-in-out transform hover:scale-105 shadow-md">Reporte Semáforo</a>
-                        <a href="https://app.powerbi.com/groups/me/rdlreports/3f2b2640-4db1-42cb-9384-4771a63d0e58?ctid=8fbed393-d03b-49f8-be79-cd5e1f590fb2&pbi_source=linkShare" class="bg-slate-700 hover:bg-yellow-500 text-white hover:text-slate-900 font-bold py-3 px-4 rounded-lg text-center transition-all duration-300 ease-in-out transform hover:scale-105 shadow-md">Cursos por Fecha de inicio</a>
-                        <a href="https://app.powerbi.com/groups/me/rdlreports/38d10ae7-06e2-4c98-8c56-e24f39940f82?ctid=8fbed393-d03b-49f8-be79-cd5e1f590fb2&pbi_source=linkShare" class="bg-slate-700 hover:bg-yellow-500 text-white hover:text-slate-900 font-bold py-3 px-4 rounded-lg text-center transition-all duration-300 ease-in-out transform hover:scale-105 shadow-md">Reporte por NRC</a>
-                        <a href="https://app.powerbi.com/groups/me/rdlreports/52a22d54-d526-4842-8399-f57b9c9ab355?ctid=8fbed393-d03b-49f8-be79-cd5e1f590fb2&pbi_source=linkShare" class="bg-slate-700 hover:bg-yellow-500 text-white hover:text-slate-900 font-bold py-3 px-4 rounded-lg text-center transition-all duration-300 ease-in-out transform hover:scale-105 shadow-md">Reporte Incidencias</a>
-                        <a href="https://app.powerbi.com/groups/me/rdlreports/4ef42b48-6937-4acf-bd50-690e6de062f4?ctid=8fbed393-d03b-49f8-be79-cd5e1f590fb2&pbi_source=linkShare" class="bg-slate-700 hover:bg-yellow-500 text-white hover:text-slate-900 font-bold py-3 px-4 rounded-lg text-center transition-all duration-300 ease-in-out transform hover:scale-105 shadow-md">Estado Actual Base/Semáforo</a>
-                    </div>
-                </div>
-
-            </main>
-
-            <!-- Pie de Página con Contacto -->
-            <footer class="text-center text-sm text-slate-300 mt-8 pt-6 border-t border-slate-700">
-                <p>Ante dudas por favor comunicarse con el coordinador Patricio Collao al correo <a href="mailto:patricio.collao@unab.cl" class="text-yellow-400 hover:underline">patricio.collao@unab.cl</a>.</p>
-            </footer>
-
-        </div>
-
+    <div id="loader">
+        <div class="spinner"></div>
+        <div style="font-size: 22px; font-weight: bold;">Estableciendo Conexión Segura...</div>
+        <div style="font-size: 14px; color: #94a3b8; margin-top: 10px;">Accediendo a través del motor académico Hugging Face</div>
     </div>
 
+    <!-- URL DE TU APP EN HUGGING FACE -->
+    <iframe id="appFrame" src="https://tutoria01-portal-etop.hf.space/?embed=true" onload="showApp()"></iframe>
+
     <script>
-        // Este script obtiene la fecha y hora actual y la muestra en el formato deseado
-        const dateElement = document.getElementById('current-date');
-        const now = new Date();
-        
-        const days = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado'];
-        const months = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
-
-        const dayName = days[now.getDay()];
-        const day = now.getDate();
-        const monthName = months[now.getMonth()];
-        const year = now.getFullYear();
-        let hours = now.getHours();
-        let minutes = now.getMinutes();
-
-        // Agrega un cero adelante si el número es menor a 10 (para formato 09:05)
-        hours = hours < 10 ? '0' + hours : hours;
-        minutes = minutes < 10 ? '0' + minutes : minutes;
-
-        const formattedDate = `Generado el ${dayName}, ${day} de ${monthName} de ${year} a las ${hours}:${minutes}`;
-        
-        dateElement.textContent = formattedDate;
+        function showApp() {
+            // Cuando la app de HF responde, quitamos el cargador
+            document.getElementById('loader').style.opacity = '0';
+            document.getElementById('appFrame').classList.add('visible');
+            setTimeout(() => { document.getElementById('loader').style.display = 'none'; }, 500);
+        }
     </script>
-
 </body>
 </html>
-
